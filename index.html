@@ -9,13 +9,5 @@
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
-    <script>
-      // When the page loads, check if this load is the result of a redirect from the 404 page
-      if (sessionStorage.redirect) {
-        const redirect = sessionStorage.redirect
-        delete sessionStorage.redirect
-        window.history.replaceState(null, null, redirect)
-      }
-    </script>
   </body>
 </html>
