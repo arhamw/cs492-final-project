@@ -4,7 +4,7 @@ import TheWelcome from '../components/TheWelcome.vue'
 
 <template>
   <div class="about">
-    <h1>This is the homepage</h1>
+    <h1>This page is about Combatting AI Misinformation</h1>
   </div>
 </template>
 
