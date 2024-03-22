@@ -4,8 +4,31 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-menu">
+        <RouterLink class="navbar-item" to="/">Home</RouterLink>
+        <RouterLink class="navbar-item" to="/dangers-about-ai"
+          >Dangers of AI Misinformation</RouterLink
+        >
+        <RouterLink class="navbar-item" to="/combatting-ai"
+          >Combatting AI Misinformation</RouterLink
+        >
+        <RouterLink class="navbar-item" to="/deepfakes">What is a Deepfake?</RouterLink>
+        <RouterLink class="navbar-item" to="/ai-generated-content"
+          >Identifying AI-Generated Content</RouterLink
+        >
+        <RouterLink class="navbar-item" to="/about">About</RouterLink>
+      </div>
+    </div>
+  </nav>
+  <!-- <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <div class="welcome-page">
+      <h1>Welcome</h1>
+      <p>Click Below to Begin!</p>
+      <button>▼</button>
+    </div>
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
@@ -15,12 +38,54 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
-  </header>
+  </header> -->
 
-  <RouterView />
+  <!-- <RouterView /> -->
 </template>
 
 <style scoped>
+.navbar {
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px; /* Adjust as needed */
+  max-width: 100%; /* Full width */
+  margin: 0 auto; /* Center the container */
+}
+
+.navbar-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-item {
+  display: inline-flex;
+  margin: 0 10px; /* Spacing between items, adjust as needed */
+  padding: 10px; /* Padding for clickable area, adjust as needed */
+  text-decoration: none; /* Optional: Removes underline from links */
+  /* color: #333; Optional: Text color */
+}
+
+.welcome-page {
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  font-family: 'Arial', 'sans-serif';
+}
+
+h1 {
+  font-size: 7em;
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -57,6 +122,15 @@ nav a:first-of-type {
 }
 
 @media (min-width: 1024px) {
+  .navbar {
+    /* Ensure the navbar stays at the top */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100; /* Adjust as needed to ensure it's above other content */
+  }
+
   header {
     display: flex;
     place-items: center;
