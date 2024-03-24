@@ -255,11 +255,11 @@ p {
 }
 
 .left-section {
-  /* Style for the left section */
+  /* Style for left section */
 }
 
 .right-section {
-  /* Style for the right section */
+  /* Style for right section */
 }
 .close-btn {
   position: absolute;
