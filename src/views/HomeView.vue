@@ -1,3 +1,13 @@
+<script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const navigateToDangersPage = () => {
+  router.push('/dangers-about-ai')
+}
+</script>
+
 <template>
   <div class="homepage">
     <section class="hero">
@@ -45,17 +55,6 @@
   </div>
 </template>
 
-<script setup>
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
-
-const navigateToDangersPage = () => {
-  // Navigate to the "Dangers of AI" page
-  router.push('/dangers-about-ai')
-}
-</script>
-
 <style scoped>
 .homepage {
   padding: 5rem;
@@ -67,14 +66,14 @@ const navigateToDangersPage = () => {
   align-items: stretch;
   justify-content: center;
   text-align: center;
-  margin-bottom: 1rem; /* Reduced margin */
-  position: relative; /* Make the hero section a positioning context */
+  margin-bottom: 1rem;
+  position: relative;
 }
 .hero-content {
-  margin-right: 80px; /* Adjust the value as needed */
+  margin-right: 80px;
 }
 .hero h1 {
-  margin-bottom: 0.5rem; /* Adjusted margin */
+  margin-bottom: 0.5rem;
   font-size: 3.5rem;
 }
 
@@ -82,21 +81,21 @@ const navigateToDangersPage = () => {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-right: 6rem; /* Increase the padding to create more space */
-  width: calc(100% + 12rem); /* Increase the width to include the padding */
-  transform: translateX(7%); /* Adjust the container vertically to align with the desired element */
+  padding-right: 6rem;
+  width: calc(100% + 12rem);
+  transform: translateX(7%);
 }
 
 .features-button-wrapper {
   display: flex;
-  flex-direction: column; /* Stack its children vertically */
+  flex-direction: column;
 }
 
 .features-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Display two columns */
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-right: 16rem; /* Add margin to the right of the features */
+  margin-right: 16rem;
 }
 
 .feature {
@@ -128,8 +127,8 @@ const navigateToDangersPage = () => {
 
 .button-container {
   display: flex;
-  align-items: center; /* Vertically center the button */
-  margin-left: auto; /* Move the button to the right */
+  align-items: center;
+  margin-left: auto;
 }
 
 .begin-button {
