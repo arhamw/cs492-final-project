@@ -106,10 +106,6 @@ export default {
 </script>
 
 <style>
-body,
-html {
-  overflow: hidden;
-}
 .main {
   padding: 5rem;
   width: 100%;
