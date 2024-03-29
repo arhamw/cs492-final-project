@@ -164,6 +164,7 @@ const navigateToDangersPage = () => {
   -webkit-user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
+  margin-right: 50px;
 }
 
 .begin-button:hover {
