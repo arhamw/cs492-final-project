@@ -101,6 +101,14 @@ const removeAlert = () => {
 }
 
 loadImages()
+
+const restartGame = () => {
+  // Reset the game state
+  score.value = 0
+  round.value = 1
+  // Load new set of images
+  loadImages()
+}
 </script>
 
 <template>
@@ -126,27 +134,6 @@ loadImages()
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      // Define the initial state
-      score: 0,
-      round: 1
-    }
-  },
-  methods: {
-    restartGame() {
-      // Reset the game state
-      this.score = 0
-      this.round = 1
-      // Load new set of images
-      this.loadImages()
-    }
-  }
-}
-</script>
 
 <style>
 @media (min-width: 1024px) {
