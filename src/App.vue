@@ -26,16 +26,14 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <style scoped>
 .navbar {
-  width: 100%;
-  position: fixed;
+  width: 101%;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  /* position: fixed; Fixed positioning
-  top: 0;
-  left: 0;
-  right: 0; */
+  background-color: rgb(34, 34, 34);
+  margin-top: 0px;
 }
 
 .container {
