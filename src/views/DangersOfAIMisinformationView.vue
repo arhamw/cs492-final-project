@@ -14,6 +14,12 @@ const navigateToCombattingAIPage = () => {
       <div class="title">
         <h1 class="glow">The AI Mirage: Unveiling Misinformation Dangers</h1>
       </div>
+      <p>
+        AI-generated misinformation poses dangers to society by challenging our ability to
+        distinguish between authentic and fabricated information. This erodes trust in media and
+        institutions, influencing political landscapes, endangering public health, and violating
+        personal privacy and security.
+      </p>
       <div class="card-container">
         <div class="card" v-for="(card, index) in cards" :key="index" @click="openPopup(card)">
           <div class="card-icon">{{ card.title }}</div>
