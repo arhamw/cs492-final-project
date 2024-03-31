@@ -155,8 +155,8 @@ export default {
 }
 
 .card {
-  max-width: 300px;
-  min-height: 430px;
+  max-width: 330px;
+  min-height: 410px;
   /* width: 300px; */
   margin: 10px;
   background-color: #fff;
@@ -172,6 +172,8 @@ export default {
   background-color: #24e494; /* Light green background */
   text-align: center;
   padding: 20px;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .card-content {
