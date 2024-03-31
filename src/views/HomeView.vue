@@ -12,7 +12,7 @@ const navigateToDangersPage = () => {
   <div class="homepage">
     <section class="hero">
       <div class="hero-content">
-        <h1>Welcome to Our Website</h1>
+        <h1 class="title">AI<span class="glow">Wise</span></h1>
       </div>
       <div class="features-button-container">
         <div class="features-button-wrapper">
@@ -20,29 +20,29 @@ const navigateToDangersPage = () => {
             <div class="feature">
               <h2>Easy to Learn</h2>
               <p>
-                Vue.js offers a simple and intuitive syntax, making it easy for developers to learn
-                and use.
+                Offers a simple and intuitive interface, making it easy for users to navigate and
+                access valuable information on AI misinformation.
               </p>
             </div>
             <div class="feature">
               <h2>Flexible</h2>
               <p>
-                Vue.js allows you to build scalable and maintainable applications with its flexible
-                architecture.
+                Allows users to explore various topics related to AI misinformation through flexible
+                and interactive content.
               </p>
             </div>
             <div class="feature">
-              <h2>Great Community</h2>
+              <h2>Discover</h2>
               <p>
-                Join the vibrant Vue.js community and get support from experienced developers
-                worldwide.
+                Provides insights and actual events, helping users understand the impact and
+                prevalence of AI-generated content in today's world.
               </p>
             </div>
             <div class="feature">
               <h2>Play</h2>
               <p>
-                Join the vibrant Vue.js community and get support from experienced developers
-                worldwide.
+                Dive into the immersive learning experience offered by our website and discover
+                innovative ways to identify AI-generated content.
               </p>
             </div>
           </div>
@@ -58,6 +58,7 @@ const navigateToDangersPage = () => {
 <style scoped>
 .homepage {
   padding: 5rem;
+  position: relative; /* Ensure relative positioning */
 }
 
 .hero {
@@ -72,18 +73,47 @@ const navigateToDangersPage = () => {
 .hero-content {
   margin-right: 80px;
 }
-.hero h1 {
-  margin-bottom: 0.5rem;
-  font-size: 3.5rem;
+.hero h1.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6vw; /* Responsive font size */
+}
+
+.hero h1.title .glow {
+  color: #27a770; /* Color for "Wise" */
+  animation: glow 1.5s infinite alternate; /* Apply animation */
+}
+
+/* Define the animation for glowing effect */
+@keyframes glow {
+  0% {
+    text-shadow:
+      0 0 10px #075f43,
+      0 0 20px #075f43,
+      0 0 30px #075f43;
+  }
+  50% {
+    text-shadow:
+      0 0 20px #075f43,
+      0 0 30px #075f43,
+      0 0 40px #075f43;
+  }
+  100% {
+    text-shadow:
+      0 0 10px #075f43,
+      0 0 20px #075f43,
+      0 0 30px #075f43;
+  }
 }
 
 .features-button-container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-right: 6rem;
   width: calc(100% + 12rem);
-  transform: translateX(7%);
+  margin-top: 3rem;
+  justify-content: center; /* Center vertically */
 }
 
 .features-button-wrapper {
@@ -126,9 +156,10 @@ const navigateToDangersPage = () => {
 }
 
 .button-container {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
+  position: fixed; /* Position fixed to the viewport */
+  bottom: 3rem; /* Adjust bottom spacing */
+  right: 0rem; /* Adjust right spacing */
+  z-index: 9999;
 }
 
 .begin-button {
@@ -152,11 +183,11 @@ const navigateToDangersPage = () => {
     system-ui,
     Roboto,
     sans-serif;
-  font-size: 20px;
+  font-size: 1vw;
   font-weight: 600;
   line-height: 2.5;
   outline: transparent;
-  padding: 0.55rem 2.5rem;
+  padding: 0.55rem 2.5vw;
   text-align: center;
   text-decoration: none;
   transition: all 250ms;
@@ -176,5 +207,29 @@ const navigateToDangersPage = () => {
     rgba(44, 187, 99, 0.25) 0 8px 16px,
     rgba(44, 187, 99, 0.25) 0 16px 32px;
   transform: scale(1.05) rotate(-1deg);
+}
+
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .hero h1.title {
+    font-size: 8vw; /* Adjust font size for tablet */
+  }
+
+  .begin-button {
+    font-size: 1.3vw; /* Adjust font size for tablet */
+    padding: 0.55em 3em; /* Adjust padding for tablet */
+    margin-right: 2vw;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .hero h1.title {
+    font-size: 10vw; /* Adjust font size for mobile */
+  }
+
+  .begin-button {
+    font-size: 2vw;
+  }
 }
 </style>

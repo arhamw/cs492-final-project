@@ -4,7 +4,7 @@
   <div class="main">
     <section class="content">
       <div class="title">
-        <h1>This page is about the Dangers of AI Misinformation</h1>
+        <h1 class="glow">The AI Mirage: Unveiling Misinformation Dangers</h1>
       </div>
       <div class="card-container">
         <div class="card">
@@ -67,6 +67,32 @@
 .title h1 {
   margin-bottom: 0.5rem; /* Adjusted margin as in the first file */
   font-size: 3.5rem; /* Same font size as in the first file */
+}
+
+@keyframes glow {
+  0% {
+    text-shadow:
+      0 0 10px #075f43,
+      0 0 20px #075f43,
+      0 0 30px #075f43;
+  }
+  50% {
+    text-shadow:
+      0 0 20px #075f43,
+      0 0 30px #075f43,
+      0 0 40px #075f43;
+  }
+  100% {
+    text-shadow:
+      0 0 10px #075f43,
+      0 0 20px #075f43,
+      0 0 30px #075f43;
+  }
+}
+
+.glow {
+  color: #429772; /* Color for glowing effect */
+  animation: glow 1.5s infinite alternate; /* Apply animation */
 }
 
 .card-container {

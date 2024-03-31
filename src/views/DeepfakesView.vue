@@ -113,25 +113,37 @@ const restartGame = () => {
 
 <template>
   <div class="about">
-    <h1>This page is about Deepfakes and how to identify them</h1>
-    <Popup v-if="showPopup" :message="popupMessage" @close="closePopup" />
+    <h1 class="glow">Decoding Deepfakes: The Reality Behind AI's Illusions</h1>
+    <section class="interesting-facts">
+      <h2>Interesting Facts</h2>
+      <!-- Add your interesting facts content here -->
+    </section>
 
-    <div v-if="round <= 4">
-      <div class="image-container">
-        <img
-          v-for="(image, index) in displayedImages"
-          :key="index"
-          :src="image"
-          @click="checkAnswer(index)"
-        />
+    <section class="user-stories">
+      <h2>User Stories</h2>
+      <!-- Add your user stories content here -->
+    </section>
+
+    <section class="game">
+      <Popup v-if="showPopup" :message="popupMessage" @close="closePopup" />
+      <h2>Play the Game</h2>
+      <div v-if="round <= 4">
+        <div class="image-container">
+          <img
+            v-for="(image, index) in displayedImages"
+            :key="index"
+            :src="image"
+            @click="checkAnswer(index)"
+          />
+        </div>
+        <div class="score">Score: {{ score }}</div>
       </div>
-      <div class="score">Score: {{ score }}</div>
-    </div>
-    <div class="final-score" v-else>
-      <h2>Game Over!</h2>
-      <p>Your final score is {{ score }}</p>
-      <button @click="restartGame">Play Again</button>
-    </div>
+      <div class="final-score" v-else>
+        <h2>Game Over!</h2>
+        <p>Your final score is {{ score }}</p>
+        <button @click="restartGame">Play Again</button>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -147,7 +159,35 @@ const restartGame = () => {
   }
   .about h1 {
     margin-bottom: 50px; /* Add margin-bottom */
+    font-size: 2.3vw;
   }
+
+  @keyframes glow {
+    0% {
+      text-shadow:
+        0 0 10px #075f43,
+        0 0 20px #075f43,
+        0 0 30px #075f43;
+    }
+    50% {
+      text-shadow:
+        0 0 20px #075f43,
+        0 0 30px #075f43,
+        0 0 40px #075f43;
+    }
+    100% {
+      text-shadow:
+        0 0 10px #075f43,
+        0 0 20px #075f43,
+        0 0 30px #075f43;
+    }
+  }
+
+  .glow {
+    color: #429772; /* Color for glowing effect */
+    animation: glow 1.5s infinite alternate; /* Apply animation */
+  }
+
   .image-container {
     display: flex;
     justify-content: space-between; /* Add space between images */
@@ -168,7 +208,7 @@ const restartGame = () => {
   }
   .alert {
     position: absolute; /* Change position to absolute */
-    top: 23%; /* Position below the h1 */
+    top: 27%; /* Position below the h1 */
     left: 50%;
     transform: translateX(-50%);
     padding: 10px 20px;
@@ -179,7 +219,7 @@ const restartGame = () => {
   }
   .final-score {
     text-align: center; /* Center align the content */
-    margin-top: 30px; /* Add top margin for spacing */
+    margin-top: 100px; /* Add top margin for spacing */
   }
 
   .final-score h2 {

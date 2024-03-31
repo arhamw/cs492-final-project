@@ -12,7 +12,7 @@ const navigateToDeepFakePage = () => {
   <div class="main">
     <section class="content">
       <div class="title">
-        <h1>This page is about Combatting AI Misinformation</h1>
+        <h1 class="glow">Navigating the Maze: Your Guide to Outsmarting AI Misinformation</h1>
       </div>
       <div class="container">
         <div class="content-wrapper">
@@ -64,26 +64,26 @@ export default {
     return {
       items: [
         {
-          heading: 'Square 1',
-          body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          heading: 'Become a Savvy News Detective',
+          body: 'Learn to spot the real from the fake. Just like a detective looks for clues, you can too! Check if reputable news outlets are also reporting the story, and be wary of sensational headlines. Remember, if it sounds too good (or bad) to be true, it might just be AI trying to fool you.',
           popupBody:
             'Pellentesque habitant morbi tristique senectus et netus et malesuada fames act'
         },
         {
-          heading: 'Square 2',
-          body: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
+          heading: 'Know AI Tricks',
+          body: 'Artificial Intelligence can create news stories or images that seem very real but arent. Understanding that not everything we see online is true helps us stay cautious. Think of AI like a magician – its good at illusions. Our job is to look beyond the trick and seek the truth.',
           popupBody:
             'Pellentesque habitant morbi tristique senectus et netus et malesuada fames act'
         },
         {
-          heading: 'Square 3',
-          body: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
+          heading: 'Use Your Tools',
+          body: 'Just like gardeners use tools to keep weeds out, we can use tools to filter out fake news. Many websites and apps can check facts for you, identifying stories or claims that are false. Embrace these tools; theyre like your digital garden shears for trimming away misinformation.',
           popupBody:
             'Pellentesque habitant morbi tristique senectus et netus et malesuada fames act'
         },
         {
-          heading: 'Square 4',
-          body: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+          heading: 'Demand Clear Information',
+          body: 'We all deserve to know where our news comes from and how decisions about what we see are made. Encouraging websites and social media to be open about how they decide what news to show us helps everyone. Think of it as asking for the recipe to a dish were being served – we have the right to know whats in it.',
           popupBody:
             'Pellentesque habitant morbi tristique senectus et netus et malesuada fames act'
         }
@@ -121,8 +121,34 @@ export default {
 }
 
 .title h1 {
-  margin-bottom: 0.5rem;
-  font-size: 3.5rem;
+  margin-bottom: 2rem;
+  font-size: 2.3vw;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow:
+      0 0 10px #075f43,
+      0 0 20px #075f43,
+      0 0 30px #075f43;
+  }
+  50% {
+    text-shadow:
+      0 0 20px #075f43,
+      0 0 30px #075f43,
+      0 0 40px #075f43;
+  }
+  100% {
+    text-shadow:
+      0 0 10px #075f43,
+      0 0 20px #075f43,
+      0 0 30px #075f43;
+  }
+}
+
+.glow {
+  color: #429772; /* Color for glowing effect */
+  animation: glow 1.5s infinite alternate; /* Apply animation */
 }
 
 .container {
@@ -133,6 +159,9 @@ export default {
   width: calc(100% + 12rem);
 }
 
+.square-container h2 {
+  color: hsla(160, 100%, 37%, 1);
+}
 .content-wrapper {
   display: flex;
   align-items: center;

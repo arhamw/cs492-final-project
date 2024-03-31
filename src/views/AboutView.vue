@@ -2,7 +2,7 @@
 
 <template>
   <div class="about">
-    <h1>About Us</h1>
+    <h1 class="glow">About Us</h1>
     <div class="description">
       <p>
         Our website is dedicated to providing valuable information about various topics relating to

@@ -2,7 +2,7 @@
 
 <template>
   <div class="about">
-    <h1>This page is about Identifying AI-Generated Content</h1>
+    <h1 class="glow">Identifying AI-Generated Photos (Photo Phantoms)</h1>
   </div>
 </template>
 
