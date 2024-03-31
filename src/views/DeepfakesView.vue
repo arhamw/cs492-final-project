@@ -12,6 +12,9 @@ import image9 from '../assets/image9.jpg'
 import image10 from '../assets/image10.jpg'
 import image11 from '../assets/image11.jpg'
 import image12 from '../assets/image12.jpg'
+import gabon1 from '../assets/gabon1.png'
+import gabon2 from '../assets/gabon2.png'
+import celebrity_deepfake from '../assets/celebrity_deepfake.png'
 import Popup from '../components/PopUpMessage.vue'
 
 const realImages = ref([image1, image2, image3, image4, image5, image6, image7, image8])
@@ -116,11 +119,59 @@ const restartGame = () => {
     <h1 class="glow">Decoding Deepfakes: The Reality Behind AI's Illusions</h1>
     <section class="interesting-facts">
       <h2>Interesting Facts</h2>
-      <!-- Add your interesting facts content here -->
+      <p style="font-weight: bold">
+        71% of respondents globally are unaware of what a deepfake is, though 57% believe they could
+        identify one if seen.
+      </p>
+      <br />
+      <p style="font-weight: bold">
+        Deepfake fraud attempts have skyrocketed by 3,000% in 2023 alone, underlining the rapid
+        growth and escalating threat posed by easily accessible generative AI and deepfake
+        technologies
+      </p>
+      <br />
+      <p>
+        Deepfakes harness advanced artificial intelligence (AI) technologies, specifically something
+        called "deep learning," to create hyper-realistic videos or audio clips. Deep learning
+        involves training a computer system with a vast amount of data, such as images and videos of
+        a person, so the system can learn how to mimic that person's appearance or voice. Imagine a
+        video that looks like it's your president giving a speech or your favorite celebrity sharing
+        a vlog, but it's all made up! That's a deepfake for you​. Both of these things have actually
+        happened!
+      </p>
     </section>
+    <br />
 
     <section class="user-stories">
       <h2>User Stories</h2>
+      <div class="card-container">
+        <div class="card1" v-for="(card, index) in cards" :key="index" @click="openPopup1(card)">
+          <div class="card-icon">{{ card.title }}</div>
+          <div class="card-content">
+            <p class="card-summary">
+              {{ card.context }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div v-if="showPopup1" class="popup" @click="closePopup1">
+        <div class="popup-content">
+          <div class="left-section">
+            <h1 class="popup-title">{{ selectedBox.title }}</h1>
+            <br />
+            <p class="popup-text">{{ selectedBox.context }}</p>
+            <br />
+            <p class="popup-text">{{ selectedBox.debunking }}</p>
+            <br />
+          </div>
+          <div class="right-section">
+            <p class="popup-text">{{ selectedBox.lessons_learned }}</p>
+            <img class="image" v-if="selectedBox.media" :src="selectedBox.media" />
+            <img class="image" v-if="selectedBox.media2" :src="selectedBox.media2" />
+          </div>
+          <div class="close-btn">X</div>
+        </div>
+      </div>
       <!-- Add your user stories content here -->
     </section>
 
@@ -147,98 +198,179 @@ const restartGame = () => {
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      cards: [
+        {
+          title: "The Political Deepfake: Gabon President's Speech",
+          context:
+            "In 2019, a video surfaced of Gabon's President Ali Bongo giving a New Year's speech, which sparked rumours about his health and capability to govern. The video's slight irregularities in his appearance raised suspicions.",
+          debunking:
+            "Experts analyzed the video, pointing out inconsistencies with previous appearances of President Bongo, such as unusual facial movements and discrepancies in the background. Further investigation by political analysts and digital forensic experts confirmed the video's manipulated aspects.",
+          lessons_learned:
+            'This incident underscored the potential of deepfakes to destabilize political environments and the importance of critical media literacy. It highlighted the need for verification tools and the critical role of experts in debunking misinformation.',
+          media: gabon1,
+          media2: gabon2
+        },
+        {
+          title: 'Celebrity Deepfake: Rashmika Mandanna',
+          context:
+            "A viral deepfake merged Rashmika Mandanna's face onto another individual's video. It was intended to inflate a fan page's followers.",
+          debunking:
+            "Traced by Delhi Police's digital forensics, the creator, an Andhra Pradesh tech enthusiast, was apprehended.",
+          lessons_learned:
+            'Highlighting the risks of deepfakes, this case advocates for stronger verification on social media and legal measures against such digital misuse',
+          media: celebrity_deepfake
+        }
+      ],
+      showPopup1: false,
+      selectedBox: null
+    }
+  },
+  methods: {
+    openPopup1(item) {
+      this.selectedBox = item
+      this.showPopup1 = true
+    },
+    closePopup1() {
+      this.selectedBox = null
+      this.showPopup1 = false
+    }
+  }
+}
+</script>
+
 <style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 100px;
-    position: relative; /* Add position: relative */
-  }
-  .about h1 {
-    margin-bottom: 50px; /* Add margin-bottom */
-    font-size: 2.3vw;
-  }
+.about {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 100px;
+  position: relative; /* Add position: relative */
+}
+.about h1 {
+  margin-bottom: 50px; /* Add margin-bottom */
+  font-size: 2.3vw;
+}
 
-  @keyframes glow {
-    0% {
-      text-shadow:
-        0 0 10px #075f43,
-        0 0 20px #075f43,
-        0 0 30px #075f43;
-    }
-    50% {
-      text-shadow:
-        0 0 20px #075f43,
-        0 0 30px #075f43,
-        0 0 40px #075f43;
-    }
-    100% {
-      text-shadow:
-        0 0 10px #075f43,
-        0 0 20px #075f43,
-        0 0 30px #075f43;
-    }
+@keyframes glow {
+  0% {
+    text-shadow:
+      0 0 10px #075f43,
+      0 0 20px #075f43,
+      0 0 30px #075f43;
   }
+  50% {
+    text-shadow:
+      0 0 20px #075f43,
+      0 0 30px #075f43,
+      0 0 40px #075f43;
+  }
+  100% {
+    text-shadow:
+      0 0 10px #075f43,
+      0 0 20px #075f43,
+      0 0 30px #075f43;
+  }
+}
 
-  .glow {
-    color: #429772; /* Color for glowing effect */
-    animation: glow 1.5s infinite alternate; /* Apply animation */
-  }
+.glow {
+  color: #429772; /* Color for glowing effect */
+  animation: glow 1.5s infinite alternate; /* Apply animation */
+}
 
-  .image-container {
-    display: flex;
-    justify-content: space-between; /* Add space between images */
-    margin-top: 80px;
-  }
-  .image-container img {
-    width: 400px;
-    height: 400px;
-    cursor: pointer;
-    border-radius: 5px; /* Optional: Add border radius */
-    padding: 5px; /* Optional: Add padding */
-    margin: 0 15px; /* Add margin to create more space between images */
-    transition: border-color 0.3s ease-in-out;
-  }
-  .score {
-    margin-top: 20px;
-    font-size: 20px; /* Increase font size */
-  }
-  .alert {
-    position: absolute; /* Change position to absolute */
-    top: 27%; /* Position below the h1 */
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 20px;
-    color: white;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 16px;
-  }
-  .final-score {
-    text-align: center; /* Center align the content */
-    margin-top: 100px; /* Add top margin for spacing */
-  }
+.image-container {
+  display: flex;
+  justify-content: space-between; /* Add space between images */
+  margin-top: 80px;
+}
+.image-container img {
+  width: 400px;
+  height: 400px;
+  cursor: pointer;
+  border-radius: 5px; /* Optional: Add border radius */
+  padding: 5px; /* Optional: Add padding */
+  margin: 0 15px; /* Add margin to create more space between images */
+  transition: border-color 0.3s ease-in-out;
+}
+.score {
+  margin-top: 20px;
+  font-size: 20px; /* Increase font size */
+}
+.alert {
+  position: absolute; /* Change position to absolute */
+  top: 27%; /* Position below the h1 */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+}
+.final-score {
+  text-align: center; /* Center align the content */
+  margin-top: 100px; /* Add top margin for spacing */
+}
 
-  .final-score h2 {
-    margin-bottom: 10px; /* Add bottom margin for spacing */
-    font-size: 34px; /* Adjusted font size */
-  }
+.final-score h2 {
+  margin-bottom: 10px; /* Add bottom margin for spacing */
+  font-size: 34px; /* Adjusted font size */
+}
 
-  .final-score p {
-    font-size: 22px; /* Adjusted font size */
-  }
+.final-score p {
+  font-size: 22px; /* Adjusted font size */
+}
 
-  .final-score button {
-    margin-top: 20px; /* Add top margin for spacing */
-    padding: 8px 20px; /* Add padding */
-    background-color: #007bff; /* Blue background color */
-    color: white; /* White text color */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Add border radius */
-    cursor: pointer; /* Add cursor pointer */
-  }
+.final-score button {
+  margin-top: 20px; /* Add top margin for spacing */
+  padding: 8px 20px; /* Add padding */
+  background-color: #007bff; /* Blue background color */
+  color: white; /* White text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add border radius */
+  cursor: pointer; /* Add cursor pointer */
+}
+
+.popup-content {
+  background-color: #1e1e1e !important; /* Change this color to your preferred choice */
+  padding: 20px;
+  border: 2px solid #e7f8d8;
+  border-radius: 10px;
+  width: 85%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  /* ... other existing styles ... */
+}
+
+.popup-title {
+  font-size: 1.1rem !important;
+  color: #24e494;
+}
+
+.popup-text {
+  color: #fff;
+}
+
+.card1 {
+  max-width: 330px;
+  min-height: 270px;
+  /* width: 300px; */
+  margin: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; /* optional rounded corners */
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.image {
+  max-width: 250px;
+  max-height: 200px;
+  padding: 10px;
 }
 </style>
