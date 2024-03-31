@@ -27,13 +27,15 @@ const navigateToCombattingAIPage = () => {
       <div v-if="showPopup" class="popup" @click="closePopup">
         <div class="popup-content">
           <div class="left-section">
-            <p>{{ selectedBox.title }}</p>
+            <h1 class="popup-title">{{ selectedBox.title }}</h1>
             <br />
-            <p>{{ selectedBox.debunking }}</p>
+            <p class="popup-text">{{ selectedBox.context }}</p>
             <br />
-            <p>{{ selectedBox.lessons_learned }}</p>
+            <p class="popup-text">{{ selectedBox.debunking }}</p>
+            <br />
           </div>
           <div class="right-section">
+            <p class="popup-text">{{ selectedBox.lessons_learned }}</p>
             <!-- Add media here -->
           </div>
           <div class="close-btn">X</div>
@@ -242,6 +244,26 @@ export default {
     rgba(44, 187, 99, 0.25) 0 8px 16px,
     rgba(44, 187, 99, 0.25) 0 16px 32px;
   transform: scale(1.05) rotate(-1deg);
+}
+
+.popup-content {
+  background-color: #1e1e1e !important; /* Change this color to your preferred choice */
+  padding: 20px;
+  border: 2px solid #e7f8d8;
+  border-radius: 10px;
+  width: 85%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  /* ... other existing styles ... */
+}
+
+.popup-title {
+  color: #24e494;
+}
+
+.popup-text {
+  color: #fff;
 }
 
 /* @media (min-width: 1024px) {
