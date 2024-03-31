@@ -160,6 +160,7 @@ export default {
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
+  margin-top: 30px;
 }
 
 .card {
@@ -168,10 +169,18 @@ export default {
   /* width: 300px; */
   margin: 10px;
   background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 0 5px #42977286,
+    0 0 10px #42977286,
+    0 0 15px #42977286; /* Add glow effect */
   border-radius: 10px; /* optional rounded corners */
   overflow: hidden;
   cursor: pointer;
+  transition: 0.3s ease-in;
+}
+
+.card:hover {
+  transform: translateY(-10px); /* Adjust bounce height */
 }
 
 .card-icon {

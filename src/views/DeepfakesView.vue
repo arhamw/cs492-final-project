@@ -17,13 +17,20 @@ import gabon2 from '../assets/gabon2.png'
 import celebrity_deepfake from '../assets/celebrity_deepfake.png'
 import Popup from '../components/PopUpMessage.vue'
 
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const navigateToAiContent = () => {
+  router.push('/ai-generated-content')
+}
+
 const realImages = ref([image1, image2, image3, image4, image5, image6, image7, image8])
 const aiImages = ref([image9, image10, image11, image12])
 const score = ref(0)
 const round = ref(1)
 const displayedImages = ref([])
 const correctIndex = ref(0)
-let alertTimeout
 const showPopup = ref(false)
 const popupMessage = ref('')
 
@@ -66,41 +73,15 @@ const checkAnswer = (index) => {
     score.value++
     round.value++
     loadImages()
-    showAlert('Correct answer!', 'green')
   } else {
     // If incorrect image is clicked
     popupMessage.value = 'Wrong answer! Try again.'
     showPopup.value = true
-    showAlert('Wrong answer! Try again.', 'red')
   }
 }
 
 const closePopup = () => {
   showPopup.value = false
-}
-
-const showAlert = (message, color) => {
-  // Remove existing alert
-  if (alertTimeout) {
-    clearTimeout(alertTimeout)
-    removeAlert()
-  }
-
-  const alertDiv = document.createElement('div')
-  alertDiv.className = 'alert'
-  alertDiv.style.backgroundColor = color
-  alertDiv.textContent = message
-  document.body.appendChild(alertDiv)
-  alertTimeout = setTimeout(() => {
-    removeAlert()
-  }, 1000)
-}
-
-const removeAlert = () => {
-  const alertDiv = document.querySelector('.alert')
-  if (alertDiv) {
-    alertDiv.remove()
-  }
 }
 
 loadImages()
@@ -118,32 +99,33 @@ const restartGame = () => {
   <div class="about">
     <h1 class="glow">Decoding Deepfakes: The Reality Behind AI's Illusions</h1>
     <section class="interesting-facts">
-      <h2>Interesting Facts</h2>
-      <p style="font-weight: bold">
-        71% of respondents globally are unaware of what a deepfake is, though 57% believe they could
-        identify one if seen.
-      </p>
-      <br />
-      <p style="font-weight: bold">
-        Deepfake fraud attempts have skyrocketed by 3,000% in 2023 alone, underlining the rapid
-        growth and escalating threat posed by easily accessible generative AI and deepfake
-        technologies
-      </p>
-      <br />
-      <p>
-        Deepfakes harness advanced artificial intelligence (AI) technologies, specifically something
-        called "deep learning," to create hyper-realistic videos or audio clips. Deep learning
-        involves training a computer system with a vast amount of data, such as images and videos of
-        a person, so the system can learn how to mimic that person's appearance or voice. Imagine a
-        video that looks like it's your president giving a speech or your favorite celebrity sharing
-        a vlog, but it's all made up! That's a deepfake for you​. Both of these things have actually
-        happened!
-      </p>
+      <div class="fact-container">
+        <div class="fact">
+          <p>
+            <strong>71% of respondents globally</strong> are unaware of what a deepfake is, though
+            <strong>57% believe they could identify one</strong> if seen.
+          </p>
+        </div>
+        <div class="fact">
+          <p>
+            <strong>Deepfake fraud attempts</strong> have skyrocketed by <strong>3,000%</strong> in
+            <strong>2023</strong> alone, underlining the rapid growth and escalating threat posed by
+            easily accessible generative AI and deepfake technologies.
+          </p>
+        </div>
+        <div class="fact">
+          <p>
+            Deepfakes <strong>harness AI technologies</strong> to create hyper-realistic videos.
+            <strong>Deep learning</strong> trains a system to mimic appearances or voices. Imagine
+            fake videos of presidents or celebrities.
+          </p>
+        </div>
+      </div>
     </section>
     <br />
 
     <section class="user-stories">
-      <h2>User Stories</h2>
+      <h2 class="glow">User Stories</h2>
       <div class="card-container">
         <div class="card1" v-for="(card, index) in cards" :key="index" @click="openPopup1(card)">
           <div class="card-icon">{{ card.title }}</div>
@@ -177,7 +159,7 @@ const restartGame = () => {
 
     <section class="game">
       <Popup v-if="showPopup" :message="popupMessage" @close="closePopup" />
-      <h2>Play the Game</h2>
+      <h2 class="glow">Test Your Knowledge</h2>
       <div v-if="round <= 4">
         <div class="image-container">
           <img
@@ -190,11 +172,14 @@ const restartGame = () => {
         <div class="score">Score: {{ score }}</div>
       </div>
       <div class="final-score" v-else>
-        <h2>Game Over!</h2>
+        <h2 class="glow">Game Over!</h2>
         <p>Your final score is {{ score }}</p>
         <button @click="restartGame">Play Again</button>
       </div>
     </section>
+    <div class="button-container">
+      <button class="begin-button" @click="navigateToAiContent">Next</button>
+    </div>
   </div>
 </template>
 
@@ -282,10 +267,66 @@ export default {
   animation: glow 1.5s infinite alternate; /* Apply animation */
 }
 
+.interesting-facts {
+  margin-bottom: 3rem;
+}
+.fact-container {
+  margin-top: 2rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem; /* Add gap between boxes */
+}
+.fact {
+  flex: 1 1 calc(33% - 2rem); /* Adjust width for 3 boxes per row */
+  padding: 1rem;
+  background-color: #f7f7f7ce; /* Adjust background color */
+  border-radius: 10px;
+  box-shadow:
+    0 0 5px #42977286,
+    0 0 10px #42977286,
+    0 0 15px #42977286; /* Add glow effect */
+  transition: transform 0.3s ease;
+  animation: bounce 4s infinite; /* Add bounce animation */
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px); /* Adjust bounce height */
+  }
+}
+
+.fact p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.fact strong {
+  font-weight: bold;
+  color: #007bff;
+}
+
+.user-stories {
+  margin-bottom: 4rem;
+}
+
+.user-stories .glow {
+  font-size: 1.4vw;
+}
+
+.game h2 {
+  margin-bottom: 10px; /* Add bottom margin for spacing */
+  font-size: 1.4vw; /* Adjusted font size */
+}
 .image-container {
   display: flex;
   justify-content: space-between; /* Add space between images */
-  margin-top: 80px;
+  margin-top: 20px;
 }
 .image-container img {
   width: 400px;
@@ -296,21 +337,18 @@ export default {
   margin: 0 15px; /* Add margin to create more space between images */
   transition: border-color 0.3s ease-in-out;
 }
+.image-container img:hover {
+  box-shadow:
+    0 0 5px #42977286,
+    0 0 10px #42977286,
+    0 0 15px #42977286;
+}
 .score {
   margin-top: 20px;
   font-size: 20px; /* Increase font size */
+  color: #75d8adbd;
 }
-.alert {
-  position: absolute; /* Change position to absolute */
-  top: 27%; /* Position below the h1 */
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 20px;
-  color: white;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 16px;
-}
+
 .final-score {
   text-align: center; /* Center align the content */
   margin-top: 100px; /* Add top margin for spacing */
@@ -362,10 +400,17 @@ export default {
   /* width: 300px; */
   margin: 10px;
   background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 0 5px #42977286,
+    0 0 10px #42977286,
+    0 0 15px #42977286; /* Add glow effect */
   border-radius: 10px; /* optional rounded corners */
   overflow: hidden;
   cursor: pointer;
+  transition: 0.3s ease-in;
+}
+.card1:hover {
+  transform: translateY(-10px); /* Adjust bounce height */
 }
 
 .image {
