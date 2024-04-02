@@ -262,7 +262,7 @@ export default {
 }
 
 .popup-content {
-  background-color: #1e1e1e !important; /* Change this color to your preferred choice */
+  background-color: #1e1e1e !important;
   padding: 20px;
   border: 2px solid #e7f8d8;
   border-radius: 10px;
@@ -270,7 +270,6 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  /* ... other existing styles ... */
 }
 
 .popup-title {
@@ -280,12 +279,4 @@ export default {
 .popup-text {
   color: #fff;
 }
-
-/* @media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-} */
 </style>

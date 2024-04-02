@@ -17,41 +17,67 @@ const navigateToDeepFakePage = () => {
       <div class="container">
         <div class="content-wrapper">
           <div class="square-container">
-            <div
-              class="square"
-              v-for="(item, index) in items"
-              :key="index"
-              @click="openPopup(item)"
-            >
+            <div class="square" v-for="(item, index) in items" :key="index">
               <h2>{{ item.heading }}</h2>
               <p>{{ item.body }}</p>
             </div>
           </div>
-          <div v-if="showPopup" class="popup" @click="closePopup">
-            <div class="popup-content">
-              <div class="left-section">
-                <p>
-                  {{ selectedBox.body }}
-                  <br /><br />
-                  Additional content goes here. Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit. Sed non maximus erat, et bibendum leo. Pellentesque habitant morbi tristique
-                  senectus et netus et malesuada fames ac turpis egestas. Quisque at maximus magna.
-                  Nulla facilisi. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                  ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                  esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident.
-                </p>
-              </div>
-              <div class="right-section">
-                <!-- Add media here -->
-              </div>
-              <div class="close-btn">X</div>
-            </div>
+        </div>
+      </div>
+      <div class="additional-content">
+        <div class="additional-item">
+          <h2 class="glow">Google's Commitment to Safe AI</h2>
+          <p>
+            Google sets high standards to ensure their AI behaves responsibly. They have a dedicated
+            team, the Responsibility and Safety Council, which checks every piece of AI research to
+            make sure it's safe and ethical. So, when you use Google, you're interacting with AI
+            that's been thoroughly checked for risks.
+          </p>
+        </div>
+        <div class="additional-item">
+          <h2 class="glow">The Trust Project</h2>
+          <div class="trust-project">
+            <p>
+              Imagine a badge of honor for trustworthy news. The Trust Project is exactly that,
+              creating clear standards to help you tell apart true news from fake stories made by
+              AI. It's like having a trusted guide in the confusing world of online information.
+            </p>
           </div>
-          <div class="button-container">
-            <button class="begin-button" @click="navigateToDeepFakePage">Next</button>
+          <div class="partnerships">
+            <p>
+              By teaming up with tech companies and educational bodies, The Trust Project is on a
+              mission to make us all smarter consumers of news. They want everyone to have the tools
+              to think critically and make informed decisions about what to believe online.
+            </p>
           </div>
+        </div>
+        <div class="additional-item">
+          <h2 class="glow">Digital Literacy is Key</h2>
+          <div class="digital-literacy">
+            <p>
+              Ever felt overwhelmed by how much is fake online? You're not alone. Research by Pew
+              Research Center shows that many of us might not realize how much AI is in our daily
+              lives, from recommending songs to filtering emails. This can make it tricky to spot
+              the fake stuff.
+            </p>
+          </div>
+        </div>
+        <div class="additional-item">
+          <h2 class="glow">Learning Little Can Mean a Lot</h2>
+          <div class="learning-little">
+            <p>
+              Just a bit of knowledge about media literacy—knowing how to question and verify online
+              information—can go a long way. Studies suggest that even a little learning can make
+              you much better at telling real news from fake. By understanding these initiatives and
+              the importance of digital literacy, you're taking a big step toward navigating the
+              online world more safely and confidently. Remember, every piece of news deserves a
+              second look, and with the right tools and knowledge, you can be your own best
+              fact-checker.
+            </p>
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="begin-button" @click="navigateToDeepFakePage">Next</button>
         </div>
       </div>
     </section>
@@ -65,41 +91,22 @@ export default {
       items: [
         {
           heading: 'Become a Savvy News Detective',
-          body: 'Learn to spot the real from the fake. Just like a detective looks for clues, you can too! Check if reputable news outlets are also reporting the story, and be wary of sensational headlines. Remember, if it sounds too good (or bad) to be true, it might just be AI trying to fool you.',
-          popupBody:
-            'Pellentesque habitant morbi tristique senectus et netus et malesuada fames act'
+          body: 'Learn to spot the real from the fake. Just like a detective looks for clues, you can too! Check if reputable news outlets are also reporting the story, and be wary of sensational headlines. Remember, if it sounds too good (or bad) to be true, it might just be AI trying to fool you.'
         },
         {
           heading: 'Know AI Tricks',
-          body: 'Artificial Intelligence can create news stories or images that seem very real but arent. Understanding that not everything we see online is true helps us stay cautious. Think of AI like a magician – its good at illusions. Our job is to look beyond the trick and seek the truth.',
-          popupBody:
-            'Pellentesque habitant morbi tristique senectus et netus et malesuada fames act'
+          body: 'Artificial Intelligence can create news stories or images that seem very real but arent. Understanding that not everything we see online is true helps us stay cautious. Think of AI like a magician – its good at illusions. Our job is to look beyond the trick and seek the truth.'
         },
         {
           heading: 'Use Your Tools',
-          body: 'Just like gardeners use tools to keep weeds out, we can use tools to filter out fake news. Many websites and apps can check facts for you, identifying stories or claims that are false. Embrace these tools; theyre like your digital garden shears for trimming away misinformation.',
-          popupBody:
-            'Pellentesque habitant morbi tristique senectus et netus et malesuada fames act'
+          body: 'Just like gardeners use tools to keep weeds out, we can use tools to filter out fake news. Many websites and apps can check facts for you, identifying stories or claims that are false. Embrace these tools; theyre like your digital garden shears for trimming away misinformation.'
         },
         {
           heading: 'Demand Clear Information',
-          body: 'We all deserve to know where our news comes from and how decisions about what we see are made. Encouraging websites and social media to be open about how they decide what news to show us helps everyone. Think of it as asking for the recipe to a dish were being served – we have the right to know whats in it.',
-          popupBody:
-            'Pellentesque habitant morbi tristique senectus et netus et malesuada fames act'
+          body: 'We all deserve to know where our news comes from and how decisions about what we see are made. Encouraging websites and social media to be open about how they decide what news to show us helps everyone. Think of it as asking for the recipe to a dish were being served – we have the right to know whats in it.'
         }
       ],
-      showPopup: false,
       selectedBox: null
-    }
-  },
-  methods: {
-    openPopup(item) {
-      this.selectedBox = item
-      this.showPopup = true
-    },
-    closePopup() {
-      this.selectedBox = null
-      this.showPopup = false
     }
   }
 }
@@ -147,8 +154,8 @@ export default {
 }
 
 .glow {
-  color: #429772; /* Color for glowing effect */
-  animation: glow 1.5s infinite alternate; /* Apply animation */
+  color: #429772;
+  animation: glow 1.5s infinite alternate;
 }
 
 .container {
@@ -237,7 +244,6 @@ export default {
   border-radius: 8px;
   transition: transform 0.3s ease;
   background-color: #333333;
-  cursor: pointer;
 }
 
 .square:hover {
@@ -255,37 +261,6 @@ p {
   font-size: 1rem;
 }
 
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-}
-
-.popup-content {
-  background-color: #727272;
-  padding: 20px;
-  border: 2px solid #e7f8d8;
-  border-radius: 10px;
-  width: 85%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.left-section {
-  /* Style for left section */
-}
-
-.right-section {
-  /* Style for right section */
-}
 .close-btn {
   position: absolute;
   top: 10px;
@@ -308,5 +283,46 @@ p {
 
 .close-btn:hover {
   background-color: #f0f0f0;
+}
+
+.additional-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.additional-item {
+  margin-bottom: 3rem;
+  padding: 1rem;
+  background-color: #333;
+  border-radius: 80px;
+  box-shadow:
+    rgba(44, 187, 99, 0.35) 0 -5px 12px -10px inset,
+    rgba(44, 187, 99, 0.25) 0 1px 2px,
+    rgba(44, 187, 99, 0.25) 0 2px 4px,
+    rgba(44, 187, 99, 0.25) 0 4px 8px,
+    rgba(44, 187, 99, 0.25) 0 8px 16px,
+    rgba(44, 187, 99, 0.25) 0 16px 32px;
+  transition: transform 0.3s ease;
+}
+
+.additional-item:hover {
+  transform: scale(1.05) rotate(-1deg);
+}
+
+.additional-item p {
+  color: #fff;
+}
+
+.trust-project,
+.partnerships,
+.digital-literacy,
+.learning-little {
+  display: flex;
+  align-items: center;
 }
 </style>
