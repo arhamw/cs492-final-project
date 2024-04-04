@@ -38,7 +38,7 @@
 
 <style>
 .about {
-  max-width: 1200px; /* Increase max-width for larger screens */
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
@@ -55,23 +55,23 @@
 }
 .group-members {
   display: flex;
-  flex-wrap: wrap; /* Allow items to wrap to new lines */
-  justify-content: center; /* Center-align items horizontally */
-  gap: 50px; /* Add spacing between items */
-  text-align: center; /* Center-align the content */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  text-align: center;
 }
 
 .member {
-  display: inline-block; /* Ensure each member is displayed as a block */
+  display: inline-block;
 }
 
 .member img {
-  width: 200px; /* Set a fixed width for all images */
-  height: 200px; /* Set a fixed height for all images */
-  object-fit: cover; /* Ensure the aspect ratio is maintained while filling the container */
-  border-radius: 50%; /* Apply border radius for circular images */
-  border: 5px solid #fff; /* Add border */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add box shadow for a subtle effect */
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .member p {
@@ -79,7 +79,6 @@
   font-weight: bold;
 }
 
-/* Media query for smaller screens */
 @media (max-width: 600px) {
   .group-members {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));

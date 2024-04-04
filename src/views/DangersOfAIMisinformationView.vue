@@ -42,9 +42,7 @@ const navigateToCombattingAIPage = () => {
           </div>
           <div class="right-section">
             <p class="popup-text">{{ selectedBox.lessons_learned }}</p>
-            <!-- Add media here -->
           </div>
-          <div class="close-btn">X</div>
         </div>
       </div>
       <div class="button-container">
@@ -116,16 +114,15 @@ export default {
 .content {
   display: flex;
   flex-direction: column;
-  /* align-items: stretch; */
   justify-content: center;
   text-align: center;
-  margin-bottom: 1rem; /* Reduced margin */
-  position: relative; /* Make the hero section a positioning context */
+  margin-bottom: 1rem;
+  position: relative;
 }
 
 .title h1 {
-  margin-bottom: 0.5rem; /* Adjusted margin as in the first file */
-  font-size: 3.5rem; /* Same font size as in the first file */
+  margin-bottom: 0.5rem;
+  font-size: 3.5rem;
 }
 
 @keyframes glow {
@@ -150,8 +147,8 @@ export default {
 }
 
 .glow {
-  color: #429772; /* Color for glowing effect */
-  animation: glow 1.5s infinite alternate; /* Apply animation */
+  color: #429772;
+  animation: glow 1.5s infinite alternate;
 }
 
 .card-container {
@@ -166,27 +163,26 @@ export default {
 .card {
   max-width: 330px;
   min-height: 410px;
-  /* width: 300px; */
   margin: 10px;
   background-color: #fff;
   box-shadow:
     0 0 5px #42977286,
     0 0 10px #42977286,
-    0 0 15px #42977286; /* Add glow effect */
-  border-radius: 10px; /* optional rounded corners */
+    0 0 15px #42977286;
+  border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
   transition: 0.3s ease-in;
 }
 
 .card:hover {
-  transform: translateY(-10px); /* Adjust bounce height */
+  transform: translateY(-10px);
 }
 
 .card-icon {
   /* Icon styles */
   color: #333;
-  background-color: #24e494; /* Light green background */
+  background-color: #24e494;
   text-align: center;
   padding: 20px;
   font-weight: bold;
@@ -199,7 +195,7 @@ export default {
 
 .card-title {
   margin-top: 0;
-  color: #333; /* Dark text color */
+  color: #333;
 }
 
 .card-summary {
@@ -261,6 +257,18 @@ export default {
   transform: scale(1.05) rotate(-1deg);
 }
 
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
 .popup-content {
   background-color: #1e1e1e !important;
   padding: 20px;

@@ -35,23 +35,18 @@ const showPopup = ref(false)
 const popupMessage = ref('')
 
 const loadImages = () => {
-  // Clear displayed images
   displayedImages.value = []
 
-  // Select two random real images
   const selectedRealImages = selectRandom(realImages.value, 2)
-  // Select one random AI image
   correctIndex.value = Math.floor(Math.random() * 3)
   const selectedAiImage = selectRandom(aiImages.value, 1)
 
-  // Merge selected images for display
   displayedImages.value = [
     ...selectedRealImages.slice(0, correctIndex.value),
     ...selectedAiImage,
     ...selectedRealImages.slice(correctIndex.value)
   ]
 
-  // Shuffle displayed images
   shuffleArray(displayedImages.value)
 }
 
@@ -87,10 +82,8 @@ const closePopup = () => {
 loadImages()
 
 const restartGame = () => {
-  // Reset the game state
   score.value = 0
   round.value = 1
-  // Load new set of images
   loadImages()
 }
 </script>
@@ -154,7 +147,6 @@ const restartGame = () => {
           <div class="close-btn">X</div>
         </div>
       </div>
-      <!-- Add your user stories content here -->
     </section>
 
     <section class="game">
@@ -234,10 +226,10 @@ export default {
   align-items: center;
   flex-direction: column;
   margin-top: 100px;
-  position: relative; /* Add position: relative */
+  position: relative;
 }
 .about h1 {
-  margin-bottom: 50px; /* Add margin-bottom */
+  margin-bottom: 50px;
   font-size: 2.3vw;
 }
 
@@ -263,8 +255,8 @@ export default {
 }
 
 .glow {
-  color: #429772; /* Color for glowing effect */
-  animation: glow 1.5s infinite alternate; /* Apply animation */
+  color: #429772;
+  animation: glow 1.5s infinite alternate;
 }
 
 .interesting-facts {
@@ -275,19 +267,19 @@ export default {
 
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem; /* Add gap between boxes */
+  gap: 2rem;
 }
 .fact {
-  flex: 1 1 calc(33% - 2rem); /* Adjust width for 3 boxes per row */
+  flex: 1 1 calc(33% - 2rem);
   padding: 1rem;
-  background-color: #f7f7f7ce; /* Adjust background color */
+  background-color: #f7f7f7ce;
   border-radius: 10px;
   box-shadow:
     0 0 5px #42977286,
     0 0 10px #42977286,
-    0 0 15px #42977286; /* Add glow effect */
+    0 0 15px #42977286;
   transition: transform 0.3s ease;
-  animation: bounce 4s infinite; /* Add bounce animation */
+  animation: bounce 4s infinite;
 }
 
 @keyframes bounce {
@@ -296,7 +288,7 @@ export default {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px); /* Adjust bounce height */
+    transform: translateY(-10px);
   }
 }
 
@@ -320,21 +312,21 @@ export default {
 }
 
 .game h2 {
-  margin-bottom: 10px; /* Add bottom margin for spacing */
-  font-size: 1.4vw; /* Adjusted font size */
+  margin-bottom: 10px;
+  font-size: 1.4vw;
 }
 .image-container {
   display: flex;
-  justify-content: space-between; /* Add space between images */
+  justify-content: space-between;
   margin-top: 20px;
 }
 .image-container img {
   width: 400px;
   height: 400px;
   cursor: pointer;
-  border-radius: 5px; /* Optional: Add border radius */
-  padding: 5px; /* Optional: Add padding */
-  margin: 0 15px; /* Add margin to create more space between images */
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0 15px;
   transition: border-color 0.3s ease-in-out;
 }
 .image-container img:hover {
@@ -345,36 +337,36 @@ export default {
 }
 .score {
   margin-top: 20px;
-  font-size: 20px; /* Increase font size */
+  font-size: 20px;
   color: #75d8adbd;
 }
 
 .final-score {
-  text-align: center; /* Center align the content */
-  margin-top: 100px; /* Add top margin for spacing */
+  text-align: center;
+  margin-top: 100px;
 }
 
 .final-score h2 {
-  margin-bottom: 10px; /* Add bottom margin for spacing */
-  font-size: 34px; /* Adjusted font size */
+  margin-bottom: 10px;
+  font-size: 34px;
 }
 
 .final-score p {
-  font-size: 22px; /* Adjusted font size */
+  font-size: 22px;
 }
 
 .final-score button {
-  margin-top: 20px; /* Add top margin for spacing */
-  padding: 8px 20px; /* Add padding */
-  background-color: #007bff; /* Blue background color */
-  color: white; /* White text color */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Add border radius */
-  cursor: pointer; /* Add cursor pointer */
+  margin-top: 20px;
+  padding: 8px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .popup-content {
-  background-color: #1e1e1e !important; /* Change this color to your preferred choice */
+  background-color: #1e1e1e !important;
   padding: 20px;
   border: 2px solid #e7f8d8;
   border-radius: 10px;
@@ -382,7 +374,6 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  /* ... other existing styles ... */
 }
 
 .popup-title {
@@ -403,14 +394,14 @@ export default {
   box-shadow:
     0 0 5px #42977286,
     0 0 10px #42977286,
-    0 0 15px #42977286; /* Add glow effect */
-  border-radius: 10px; /* optional rounded corners */
+    0 0 15px #42977286;
+  border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
   transition: 0.3s ease-in;
 }
 .card1:hover {
-  transform: translateY(-10px); /* Adjust bounce height */
+  transform: translateY(-10px);
 }
 
 .image {
