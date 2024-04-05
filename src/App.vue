@@ -1,5 +1,11 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { useRouter, RouterLink, RouterView } from 'vue-router'
+
+const router = useRouter()
+
+router.afterEach(() => {
+  window.scrollTo(0, 0)
+})
 </script>
 
 <template>

@@ -1,10 +1,87 @@
 <script setup>
+import { ref } from 'vue'
+import image1 from '../assets/image1.jpg'
+import image2 from '../assets/image2.jpg'
+import image3 from '../assets/image3.jpg'
+import image4 from '../assets/image4.jpg'
+import image5 from '../assets/image5.jpg'
+import image6 from '../assets/image6.jpg'
+import image7 from '../assets/image7.jpg'
+import image8 from '../assets/image8.jpg'
+import image9 from '../assets/image9.jpg'
+import image10 from '../assets/image10.jpg'
+import image11 from '../assets/image11.jpg'
+import image12 from '../assets/image12.jpg'
+import Popup from '../components/PopUpMessage.vue'
+
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
 const navigateToAboutPage = () => {
   router.push('/about')
+}
+
+const realImages = ref([image1, image2, image3, image4, image5, image6, image7, image8])
+const aiImages = ref([image9, image10, image11, image12])
+const score = ref(0)
+const round = ref(1)
+const displayedImages = ref([])
+const correctIndex = ref(0)
+const showPopup = ref(false)
+const popupMessage = ref('')
+
+const loadImages = () => {
+  displayedImages.value = []
+
+  const selectedRealImages = selectRandom(realImages.value, 2)
+  correctIndex.value = Math.floor(Math.random() * 3)
+  const selectedAiImage = selectRandom(aiImages.value, 1)
+
+  displayedImages.value = [
+    ...selectedRealImages.slice(0, correctIndex.value),
+    ...selectedAiImage,
+    ...selectedRealImages.slice(correctIndex.value)
+  ]
+
+  shuffleArray(displayedImages.value)
+}
+
+const selectRandom = (array, count) => {
+  const shuffled = array.sort(() => 0.5 - Math.random())
+  return shuffled.slice(0, count)
+}
+
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
+  }
+}
+
+const checkAnswer = (index) => {
+  if (index === correctIndex.value) {
+    // If correct AI image is clicked
+    score.value++
+    round.value++
+    loadImages()
+  } else {
+    // If incorrect image is clicked
+    popupMessage.value = 'Wrong answer! Try again.'
+    showPopup.value = true
+  }
+}
+
+const closePopup = () => {
+  showPopup.value = false
+}
+
+loadImages()
+
+const restartGame = () => {
+  score.value = 0
+  round.value = 1
+  loadImages()
 }
 </script>
 
@@ -98,6 +175,26 @@ const navigateToAboutPage = () => {
         </div>
       </div>
     </div>
+    <section class="game">
+      <Popup v-if="showPopup" :message="popupMessage" @close="closePopup" />
+      <h2 class="glow">Test Your Knowledge</h2>
+      <div v-if="round <= 4">
+        <div class="image-container">
+          <img
+            v-for="(image, index) in displayedImages"
+            :key="index"
+            :src="image"
+            @click="checkAnswer(index)"
+          />
+        </div>
+        <div class="score">Score: {{ score }}</div>
+      </div>
+      <div class="final-score" v-else>
+        <h2 class="glow">Game Over!</h2>
+        <p>Your final score is {{ score }}</p>
+        <button @click="restartGame">Play Again</button>
+      </div>
+    </section>
     <div class="button-container">
       <button class="begin-button" @click="navigateToAboutPage">Next</button>
     </div>
@@ -182,5 +279,59 @@ const navigateToAboutPage = () => {
 
 .fa {
   color: #429772;
+}
+
+.game h2 {
+  margin-bottom: 10px;
+  font-size: 1.4vw;
+}
+.image-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.image-container img {
+  width: 400px;
+  height: 400px;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0 15px;
+  transition: border-color 0.3s ease-in-out;
+}
+.image-container img:hover {
+  box-shadow:
+    0 0 5px #42977286,
+    0 0 10px #42977286,
+    0 0 15px #42977286;
+}
+.score {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #75d8adbd;
+}
+
+.final-score {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.final-score h2 {
+  margin-bottom: 10px;
+  font-size: 34px;
+}
+
+.final-score p {
+  font-size: 22px;
+}
+
+.final-score button {
+  margin-top: 20px;
+  padding: 8px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 </style>
