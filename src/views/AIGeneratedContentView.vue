@@ -35,19 +35,25 @@ const popupMessage = ref('')
 const loadImages = () => {
   displayedImages.value = []
 
-  const roundImages = [
-    [elon2, elon3, elon], // Round 1: Elon Musk
-    [obama2, obama3, obama], // Round 2: Barack Obama
-    [oprah2, oprah3, oprah], // Round 3: Oprah Winfrey
-    [rock2, rock3, rock], // Round 4: The Rock
-    [taylor2, taylor3, taylor] // Round 5: Taylor Swift
-  ]
+  const fakeImages = [elon, obama, oprah, rock, taylor] // Fake images
 
+  const roundImages = [
+    [elon2, elon3], // Round 1: Elon Musk
+    [obama2, obama3], // Round 2: Barack Obama
+    [oprah2, oprah3], // Round 3: Oprah Winfrey
+    [rock2, rock3], // Round 4: The Rock
+    [taylor2, taylor3] // Round 5: Taylor Swift
+  ]
   const selectedRoundImages = roundImages[round.value - 1]
 
-  shuffleArray(selectedRoundImages)
+  displayedImages.value.push(...selectedRoundImages)
 
-  displayedImages.value = selectedRoundImages
+  const fakeImage = fakeImages[round.value - 1]
+  displayedImages.value.push(fakeImage)
+
+  shuffleArray(displayedImages.value)
+
+  correctIndex.value = displayedImages.value.findIndex((image) => image === fakeImage)
 }
 
 const shuffleArray = (array) => {
