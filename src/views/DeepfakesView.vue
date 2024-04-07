@@ -119,32 +119,22 @@ const restartGame = () => {
 
     <section class="user-stories">
       <h2 class="glow">User Stories</h2>
-      <div class="card-container">
-        <div class="card1" v-for="(card, index) in cards" :key="index" @click="openPopup1(card)">
-          <div class="card-icon">{{ card.title }}</div>
-          <div class="card-content">
-            <p class="card-summary">
-              {{ card.context }}
-            </p>
-          </div>
-        </div>
-      </div>
-      <div v-if="showPopup1" class="popup" @click="closePopup1">
-        <div class="popup-content">
-          <div class="left-section">
-            <h1 class="popup-title">{{ selectedBox.title }}</h1>
+      <div class="additional-item2" v-for="(card, index) in cards" :key="index">
+        <h2 class="glow">{{ card.title }}</h2>
+        <div class="learning-little">
+          <p>
+            <span class="subheadings">Context:</span>
+            {{ card.context }}
             <br />
-            <p class="popup-text">{{ selectedBox.context }}</p>
+            <span class="subheadings">Debunking:</span>
+            {{ card.debunking }}
             <br />
-            <p class="popup-text">{{ selectedBox.debunking }}</p>
+            <span class="subheadings">Lessons learned:</span>
+            {{ card.lessons_learned }}
             <br />
-          </div>
-          <div class="right-section">
-            <p class="popup-text">{{ selectedBox.lessons_learned }}</p>
-            <img class="image" v-if="selectedBox.media" :src="selectedBox.media" />
-            <img class="image" v-if="selectedBox.media2" :src="selectedBox.media2" />
-          </div>
-          <div class="close-btn">X</div>
+            <img class="image" v-if="card.media" :src="card.media" />
+            <img class="image" v-if="card.media2" :src="card.media2" />
+          </p>
         </div>
       </div>
     </section>
@@ -408,5 +398,33 @@ export default {
   max-width: 250px;
   max-height: 200px;
   padding: 10px;
+}
+
+.additional-item2 {
+  margin-bottom: 3rem;
+  padding: 1rem;
+  background-color: #333;
+  border-radius: 30px;
+  box-shadow:
+    rgba(44, 187, 99, 0.35) 0 -5px 12px -10px inset,
+    rgba(44, 187, 99, 0.25) 0 1px 2px,
+    rgba(44, 187, 99, 0.25) 0 2px 4px,
+    rgba(44, 187, 99, 0.25) 0 4px 8px,
+    rgba(44, 187, 99, 0.25) 0 8px 16px,
+    rgba(44, 187, 99, 0.25) 0 16px 32px;
+  transition: transform 0.3s ease;
+  max-width: 1000px;
+}
+
+.additional-item2:hover {
+  transform: scale(1.05);
+}
+
+.additional-item2 p {
+  color: #fff;
+}
+
+.subheadings {
+  color: #adadad;
 }
 </style>

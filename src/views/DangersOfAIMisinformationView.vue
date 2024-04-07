@@ -35,12 +35,15 @@ const navigateToCombattingAIPage = () => {
           <div class="left-section">
             <h1 class="popup-title">{{ selectedBox.title }}</h1>
             <br />
+            <h3>Context</h3>
             <p class="popup-text">{{ selectedBox.context }}</p>
             <br />
+            <h3>Debunking</h3>
             <p class="popup-text">{{ selectedBox.debunking }}</p>
             <br />
           </div>
           <div class="right-section">
+            <h3>Lessons learned</h3>
             <p class="popup-text">{{ selectedBox.lessons_learned }}</p>
           </div>
         </div>
