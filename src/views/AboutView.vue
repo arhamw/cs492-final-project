@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import insta_logo from '../assets/instagram_logo.png'
+</script>
 
 <template>
   <div class="about">
@@ -32,6 +34,17 @@
           <p>Arham Waqar</p>
         </div>
       </div>
+    </div>
+    <div class="insta-section">
+      <h2 class="glow">Checkout our Instagram</h2>
+      <a href="https://www.instagram.com/ai._wise/">
+        <img class="image" v-if="insta_logo" :src="insta_logo" />
+      </a>
+    </div>
+    <div>
+      <h2 class="glow">
+        <a href="../assets/references.txt" download="references.txt">References (click me)</a>
+      </h2>
     </div>
   </div>
 </template>
@@ -77,6 +90,18 @@
 .member p {
   margin-top: 10px;
   font-weight: bold;
+}
+
+.insta-section {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  /* padding: 50px; */
+  cursor: pointer;
+}
+
+.insta-section a:hover {
+  text-decoration: none;
+  background-color: transparent;
 }
 
 @media (max-width: 600px) {
