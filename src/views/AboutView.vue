@@ -1,5 +1,6 @@
 <script setup>
 import insta_logo from '../assets/instagram_logo.png'
+import references from '../assets/references.txt'
 </script>
 
 <template>
@@ -43,7 +44,7 @@ import insta_logo from '../assets/instagram_logo.png'
     </div>
     <div>
       <h2 class="glow">
-        <a href="../assets/references.txt" download="references.txt">References (click me)</a>
+        <a :href="references" download="references.txt">References (click me)</a>
       </h2>
     </div>
   </div>
