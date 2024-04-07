@@ -280,7 +280,7 @@ loadImages()
   color: #429772;
 }
 .game {
-  margin-top: -300px;
+  margin-top: -100px;
   margin-bottom: 100px;
 }
 .game h2 {
