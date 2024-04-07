@@ -37,7 +37,7 @@ import insta_logo from '../assets/instagram_logo.png'
     </div>
     <div class="insta-section">
       <h2 class="glow">Checkout our Instagram</h2>
-      <a href="https://www.instagram.com/ai._wise/">
+      <a href="https://www.instagram.com/ai._wise/" target="_blank">
         <img class="image" v-if="insta_logo" :src="insta_logo" />
       </a>
     </div>
