@@ -31,6 +31,7 @@ const displayedImages = ref([])
 const correctIndex = ref(0)
 const showPopup = ref(false)
 const popupMessage = ref('')
+const enableToggle = false
 
 const loadImages = () => {
   displayedImages.value = []
@@ -180,7 +181,13 @@ loadImages()
       </div>
     </div>
     <section class="game">
-      <Popup v-if="showPopup" :message="popupMessage" @close="closePopup" />
+      <Popup
+        v-if="showPopup"
+        :message1="popupMessage"
+        :message2="''"
+        @close="closePopup"
+        :enableToggle="enableToggle"
+      />
       <h2 class="glow">Test Your Knowledge</h2>
       <div v-if="round <= 5">
         <div class="image-container">

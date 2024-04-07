@@ -1,17 +1,17 @@
 <script setup>
 import { ref } from 'vue'
-import image1 from '../assets/image1.jpg'
-import image2 from '../assets/image2.jpg'
-import image3 from '../assets/image3.jpg'
-import image4 from '../assets/image4.jpg'
-import image5 from '../assets/image5.jpg'
-import image6 from '../assets/image6.jpg'
-import image7 from '../assets/image7.jpg'
-import image8 from '../assets/image8.jpg'
-import image9 from '../assets/image9.jpg'
-import image10 from '../assets/image10.jpg'
-import image11 from '../assets/image11.jpg'
-import image12 from '../assets/image12.jpg'
+import trump from '../assets/trump.png'
+import trump2 from '../assets/trump2.jpg'
+import trump3 from '../assets/trump3.jpg'
+import gaza from '../assets/gaza.png'
+import gaza2 from '../assets/gaza2.jpg'
+import gaza3 from '../assets/gaza3.jpg'
+import mark from '../assets/mark.png'
+import mark2 from '../assets/mark2.jpg'
+import mark3 from '../assets/mark3.jpg'
+import pope from '../assets/pope.png'
+import pope2 from '../assets/pope2.jpg'
+import pope3 from '../assets/pope3.jpg'
 import gabon1 from '../assets/gabon1.png'
 import gabon2 from '../assets/gabon2.png'
 import celebrity_deepfake from '../assets/celebrity_deepfake.png'
@@ -25,34 +25,37 @@ const navigateToAiContent = () => {
   router.push('/ai-generated-content')
 }
 
-const realImages = ref([image1, image2, image3, image4, image5, image6, image7, image8])
-const aiImages = ref([image9, image10, image11, image12])
 const score = ref(0)
 const round = ref(1)
-const displayedImages = ref([])
 const correctIndex = ref(0)
+const displayedImages = ref([])
 const showPopup = ref(false)
 const popupMessage = ref('')
+
+const enableToggle = true
 
 const loadImages = () => {
   displayedImages.value = []
 
-  const selectedRealImages = selectRandom(realImages.value, 2)
-  correctIndex.value = Math.floor(Math.random() * 3)
-  const selectedAiImage = selectRandom(aiImages.value, 1)
+  const fakeImages = [trump, gaza, mark, pope] // Fake images
 
-  displayedImages.value = [
-    ...selectedRealImages.slice(0, correctIndex.value),
-    ...selectedAiImage,
-    ...selectedRealImages.slice(correctIndex.value)
+  const roundImages = [
+    [trump2, trump3], // Round 1: Trump
+    [gaza2, gaza3], // Round 2: Gaza
+    [mark2, mark3], // Round 3: Mark
+    [pope2, pope3] // Round 4: Pope
   ]
 
-  shuffleArray(displayedImages.value)
-}
+  const selectedRoundImages = roundImages[round.value - 1]
 
-const selectRandom = (array, count) => {
-  const shuffled = array.sort(() => 0.5 - Math.random())
-  return shuffled.slice(0, count)
+  displayedImages.value.push(...selectedRoundImages)
+
+  const fakeImage = fakeImages[round.value - 1]
+  displayedImages.value.push(fakeImage)
+
+  shuffleArray(displayedImages.value)
+
+  correctIndex.value = displayedImages.value.findIndex((image) => image === fakeImage)
 }
 
 const shuffleArray = (array) => {
@@ -62,15 +65,36 @@ const shuffleArray = (array) => {
   }
 }
 
+const hintMessages = [
+  [
+    'Hint 1: Examine if there are any facial Inconsistencies like the head not aligned properly with the body or the lighting on the face being different',
+    'Hint 2: Look at the edges and borders carefully, and look for any unusual blurring or sharpness which incidents digital manipulation'
+  ],
+  [
+    'Hint 1: Look at Smoke and Explosion Texture, if its too smooth or has a repeating pattern, it can be artificial.',
+    'Hint 2: Examine the Interaction with the Environment, including casting shadows, causing visible damage, or affecting nearby objects.'
+  ],
+  [
+    'Hint 1: Check for any irregularities in facial symmetry, as well as discrepancies in the size and placement of eyes, nose, mouth, and ears.',
+    'Hint 2: The skin texture in a deepfake can often appear too smooth or uniform. Look for a lack of pores, wrinkles, and other skin features that are typical in real images.'
+  ],
+  [
+    'Hint 1: Analyse if there are any Contextual Anomalies, meaning if the image seems out of character or unlike their public appearances, its fake.',
+    'Hint 2: Look at Clothing Texture and Draping, If the clothing looks too stiff, too puffy, or unnaturally smooth, it may have been digitally altered.'
+  ]
+]
+
 const checkAnswer = (index) => {
   if (index === correctIndex.value) {
-    // If correct AI image is clicked
+    // If correct fake image is clicked
     score.value++
     round.value++
     loadImages()
   } else {
-    // If incorrect image is clicked
-    popupMessage.value = 'Wrong answer! Try again.'
+    // If any other image is clicked
+    const roundIndex = round.value - 1
+    const hintIndex = Math.floor(Math.random() * hintMessages[roundIndex].length)
+    popupMessage.value = hintMessages[roundIndex][hintIndex]
     showPopup.value = true
   }
 }
@@ -140,7 +164,14 @@ const restartGame = () => {
     </section>
 
     <section class="game">
-      <Popup v-if="showPopup" :message="popupMessage" @close="closePopup" />
+      <Popup
+        v-if="showPopup"
+        :message1="hintMessages[round - 1][0]"
+        :message2="hintMessages[round - 1][1]"
+        :enableToggle="enableToggle"
+        @close="closePopup"
+        ref="popup"
+      />
       <h2 class="glow">Test Your Knowledge</h2>
       <div v-if="round <= 4">
         <div class="image-container">
@@ -193,7 +224,9 @@ export default {
         }
       ],
       showPopup1: false,
-      selectedBox: null
+      selectedBox: null,
+      enableToggle: true,
+      popupToggleHintMessage: ''
     }
   },
   methods: {
@@ -204,6 +237,10 @@ export default {
     closePopup1() {
       this.selectedBox = null
       this.showPopup1 = false
+    },
+    toggleHint() {
+      this.$refs.popup.toggleHint()
+      this.popupToggleHintMessage = this.$refs.popup.currentMessage
     }
   }
 }

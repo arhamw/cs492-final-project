@@ -1,8 +1,10 @@
 <template>
-  <div class="popup" @click.self="closePopup">
+  <div class="popup-overlay" @click="closePopup">
     <div class="popup-content">
-      <p>{{ message }}</p>
-      <button @click="closePopup" class="close-button">Close</button>
+      <div class="popup-title">Message</div>
+      <div class="popup-text">{{ currentMessage }}</div>
+      <button v-if="enableToggle" @click.stop="toggleHint">Toggle Hint</button>
+      <button @click.stop="closePopup">Close</button>
     </div>
   </div>
 </template>
@@ -10,46 +12,77 @@
 <script>
 export default {
   props: {
-    message: String
+    message1: {
+      type: String,
+      required: true
+    },
+    message2: {
+      type: String,
+      required: true
+    },
+    enableToggle: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      showFirstHint: true
+    }
+  },
+  computed: {
+    currentMessage() {
+      return this.showFirstHint ? this.message1 : this.message2
+    }
   },
   methods: {
     closePopup() {
       this.$emit('close')
+    },
+    toggleHint() {
+      this.showFirstHint = !this.showFirstHint
     }
   }
 }
 </script>
 
 <style scoped>
-.popup {
+.popup-overlay {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-  width: 100vw;
-  height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999; /* Ensure the popup is on top of other content */
 }
 
 .popup-content {
-  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.popup p {
-  margin-bottom: 15px;
+.popup-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.popup .close-button {
-  padding: 8px 12px; /* Adjusted padding for the close button */
+.popup-text {
+  margin-bottom: 10px;
+}
+
+button {
+  margin-right: 10px;
+  padding: 8px 16px;
   background-color: #007bff;
-  color: white;
+  color: #fff;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
-  width: auto; /* Set width to auto */
 }
 </style>
