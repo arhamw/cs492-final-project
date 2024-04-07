@@ -1,17 +1,20 @@
 <script setup>
 import { ref } from 'vue'
-import image1 from '../assets/image1.jpg'
-import image2 from '../assets/image2.jpg'
-import image3 from '../assets/image3.jpg'
-import image4 from '../assets/image4.jpg'
-import image5 from '../assets/image5.jpg'
-import image6 from '../assets/image6.jpg'
-import image7 from '../assets/image7.jpg'
-import image8 from '../assets/image8.jpg'
-import image9 from '../assets/image9.jpg'
-import image10 from '../assets/image10.jpg'
-import image11 from '../assets/image11.jpg'
-import image12 from '../assets/image12.jpg'
+import elon from '../assets/elon.png'
+import elon2 from '../assets/elon2.png'
+import elon3 from '../assets/elon3.png'
+import obama from '../assets/obama.png'
+import obama2 from '../assets/obama2.png'
+import obama3 from '../assets/obama3.png'
+import oprah from '../assets/oprah.png'
+import oprah2 from '../assets/oprah2.png'
+import oprah3 from '../assets/oprah3.png'
+import rock from '../assets/rock.png'
+import rock2 from '../assets/rock2.png'
+import rock3 from '../assets/rock3.png'
+import taylor from '../assets/taylor.png'
+import taylor2 from '../assets/taylor2.png'
+import taylor3 from '../assets/taylor3.png'
 import Popup from '../components/PopUpMessage.vue'
 
 import { useRouter } from 'vue-router'
@@ -22,8 +25,6 @@ const navigateToAboutPage = () => {
   router.push('/about')
 }
 
-const realImages = ref([image1, image2, image3, image4, image5, image6, image7, image8])
-const aiImages = ref([image9, image10, image11, image12])
 const score = ref(0)
 const round = ref(1)
 const displayedImages = ref([])
@@ -34,22 +35,19 @@ const popupMessage = ref('')
 const loadImages = () => {
   displayedImages.value = []
 
-  const selectedRealImages = selectRandom(realImages.value, 2)
-  correctIndex.value = Math.floor(Math.random() * 3)
-  const selectedAiImage = selectRandom(aiImages.value, 1)
-
-  displayedImages.value = [
-    ...selectedRealImages.slice(0, correctIndex.value),
-    ...selectedAiImage,
-    ...selectedRealImages.slice(correctIndex.value)
+  const roundImages = [
+    [elon2, elon3, elon], // Round 1: Elon Musk
+    [obama2, obama3, obama], // Round 2: Barack Obama
+    [oprah2, oprah3, oprah], // Round 3: Oprah Winfrey
+    [rock2, rock3, rock], // Round 4: The Rock
+    [taylor2, taylor3, taylor] // Round 5: Taylor Swift
   ]
 
-  shuffleArray(displayedImages.value)
-}
+  const selectedRoundImages = roundImages[round.value - 1]
 
-const selectRandom = (array, count) => {
-  const shuffled = array.sort(() => 0.5 - Math.random())
-  return shuffled.slice(0, count)
+  shuffleArray(selectedRoundImages)
+
+  displayedImages.value = selectedRoundImages
 }
 
 const shuffleArray = (array) => {
@@ -76,13 +74,13 @@ const closePopup = () => {
   showPopup.value = false
 }
 
-loadImages()
-
 const restartGame = () => {
   score.value = 0
   round.value = 1
   loadImages()
 }
+
+loadImages()
 </script>
 
 <template>
@@ -178,7 +176,7 @@ const restartGame = () => {
     <section class="game">
       <Popup v-if="showPopup" :message="popupMessage" @close="closePopup" />
       <h2 class="glow">Test Your Knowledge</h2>
-      <div v-if="round <= 4">
+      <div v-if="round <= 5">
         <div class="image-container">
           <img
             v-for="(image, index) in displayedImages"
@@ -207,6 +205,7 @@ const restartGame = () => {
   display: flex;
   align-items: center;
   text-align: center;
+  padding: 0;
 }
 
 .content2 {
@@ -280,10 +279,13 @@ const restartGame = () => {
 .fa {
   color: #429772;
 }
-
+.game {
+  margin-top: -100px;
+  margin-bottom: 100px;
+}
 .game h2 {
   margin-bottom: 10px;
-  font-size: 1.4vw;
+  font-size: 1.7vw;
 }
 .image-container {
   display: flex;
@@ -291,8 +293,8 @@ const restartGame = () => {
   margin-top: 20px;
 }
 .image-container img {
-  width: 400px;
-  height: 400px;
+  max-width: 100%;
+  height: auto;
   cursor: pointer;
   border-radius: 5px;
   padding: 5px;
