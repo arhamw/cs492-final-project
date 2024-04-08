@@ -58,7 +58,7 @@ const navigateToDangersPage = () => {
 <style scoped>
 .homepage {
   padding: 5rem;
-  position: relative; /* Ensure relative positioning */
+  position: relative; 
 }
 
 .hero {
@@ -77,15 +77,14 @@ const navigateToDangersPage = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 6vw; /* Responsive font size */
+  font-size: 6vw; 
 }
 
 .hero h1.title .glow {
-  color: #27a770; /* Color for "Wise" */
-  animation: glow 1.5s infinite alternate; /* Apply animation */
+  color: #27a770;
+  animation: glow 1.5s infinite alternate; 
 }
 
-/* Define the animation for glowing effect */
 @keyframes glow {
   0% {
     text-shadow:
@@ -113,7 +112,7 @@ const navigateToDangersPage = () => {
   align-items: center;
   width: calc(100% + 12rem);
   margin-top: 3rem;
-  justify-content: center; /* Center vertically */
+  justify-content: center; 
 }
 
 .features-button-wrapper {
@@ -156,9 +155,9 @@ const navigateToDangersPage = () => {
 }
 
 .button-container {
-  position: fixed; /* Position fixed to the viewport */
-  bottom: 3rem; /* Adjust bottom spacing */
-  right: 0rem; /* Adjust right spacing */
+  position: fixed; 
+  bottom: 3rem; 
+  right: 0rem; 
   z-index: 9999;
 }
 
@@ -209,15 +208,14 @@ const navigateToDangersPage = () => {
   transform: scale(1.05) rotate(-1deg);
 }
 
-/* Tablet Styles */
 @media (max-width: 1024px) {
   .hero h1.title {
-    font-size: 8vw; /* Adjust font size for tablet */
+    font-size: 8vw; 
   }
 
   .begin-button {
-    font-size: 1.3vw; /* Adjust font size for tablet */
-    padding: 0.55em 3em; /* Adjust padding for tablet */
+    font-size: 1.3vw;
+    padding: 0.55em 3em;
     margin-right: 2vw;
   }
 }
@@ -225,7 +223,7 @@ const navigateToDangersPage = () => {
 /* Mobile Styles */
 @media (max-width: 768px) {
   .hero h1.title {
-    font-size: 10vw; /* Adjust font size for mobile */
+    font-size: 10vw;
   }
 
   .begin-button {

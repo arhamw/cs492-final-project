@@ -46,9 +46,9 @@ router.afterEach(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px; /* Adjust as needed */
-  max-width: 100%; /* Full width */
-  margin: 0 auto; /* Center the container */
+  height: 60px;
+  max-width: 100%; 
+  margin: 0 auto;
 }
 
 .navbar-menu {
@@ -60,14 +60,11 @@ router.afterEach(() => {
 
 .navbar-item {
   display: inline-flex;
-  margin: 0 10px; /* Spacing between items, adjust as needed */
-  padding: 10px; /* Padding for clickable area, adjust as needed */
-  text-decoration: none; /* Optional: Removes underline from links */
-  /* color: #333; Optional: Text color */
+  margin: 0 10px; 
+  text-decoration: none; 
 }
 
 .welcome-page {
-  /* display: flex; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
