@@ -145,7 +145,7 @@ loadImages()
         </div>
       </div>
     </div>
-    <div class="about">
+    <div class="about2">
       <h1 class="glow">Identifying AI-Generated Text (Text Trickery)</h1>
       <div class="content2">
         <p class="intro">
@@ -180,7 +180,7 @@ loadImages()
         </div>
       </div>
     </div>
-    <section class="game">
+    <section class="game" id="ai">
       <Popup
         v-if="showPopup"
         :message1="popupMessage"
@@ -188,7 +188,7 @@ loadImages()
         @close="closePopup"
         :enableToggle="enableToggle"
       />
-      <h2 class="glow">Test Your Knowledge</h2>
+      <h2 class="glow">Find the Fake Tweet</h2>
       <div v-if="round <= 5">
         <div class="image-container">
           <img
@@ -292,8 +292,18 @@ loadImages()
 .fa {
   color: #429772;
 }
-.game {
-  margin-top: -100px;
+
+.about2 {
+  margin-top: 100px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0;
+}
+#ai {
+  margin-top: -300px;
   margin-bottom: 100px;
 }
 .game h2 {

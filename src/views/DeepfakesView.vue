@@ -163,7 +163,7 @@ const restartGame = () => {
       </div>
     </section>
 
-    <section class="game">
+    <section class="game" id="deepfake">
       <Popup
         v-if="showPopup"
         :message1="hintMessages[round - 1][0]"
@@ -172,7 +172,7 @@ const restartGame = () => {
         @close="closePopup"
         ref="popup"
       />
-      <h2 class="glow">Test Your Knowledge</h2>
+      <h2 class="glow">Find the AI Image</h2>
       <div v-if="round <= 4">
         <div class="image-container">
           <img
@@ -336,6 +336,10 @@ export default {
 
 .user-stories .glow {
   font-size: 1.4vw;
+}
+
+#deepfake {
+  margin-top: 40px;
 }
 
 .game h2 {
